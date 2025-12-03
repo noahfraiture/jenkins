@@ -1,19 +1,8 @@
 pipeline {
     agent any
 
-    parameters {
-        choice(
-            name: 'EVENT',
-            choices: ['COMMIT', 'OTHER'],
-            description: 'Type of event that triggered this build'
-        )
-    }
-
     stages {
         stage('Test') {
-            when {
-                expression { return params.EVENT == 'COMMIT' }
-            }
             steps {
                 script {
                     def changedFile = currentBuild.changeSets
