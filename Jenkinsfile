@@ -17,6 +17,8 @@ pipeline {
 
                     echo changedFile
 
+                    sh "pwd"
+                    sh "ls -R ."
                     sh "make sync-product-mappings FILE='${changedFile}'"
                 }
             }
